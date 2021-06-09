@@ -8,7 +8,7 @@ cd booking-ticket-backend
 ```
 
 Running backend php to call api [php](https://stackoverflow.com/questions/4301975/how-can-i-run-a-php-without-a-web-server) to install sever.
-
+( remember install composer)
 ```bash
 php -S localhost:8000
 ```
