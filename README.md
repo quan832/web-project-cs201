@@ -1,3 +1,5 @@
+
+=======
 # Movie booking ticket
 
 
@@ -44,3 +46,4 @@ npm run dev
 + Trần Hồng Quân
 + Phan Nguyễn Đức Trọng
 + Đặng Minh Triết
+
