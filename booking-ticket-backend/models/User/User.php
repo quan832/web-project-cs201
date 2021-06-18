@@ -2,7 +2,7 @@
 class User
 {
     private $conn;
-private $table_name = "users";
+    private $table_name = "users";
     // Properties
     public $user_id;
     public $user_account;
