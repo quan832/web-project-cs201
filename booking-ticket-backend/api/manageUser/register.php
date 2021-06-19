@@ -1,6 +1,6 @@
 <?php
 // required headers
-header("Access-Control-Allow-Origin: http://localhost/web-project-cs201/booking-ticket-backend/api/manageUser/register.php");
+header("Access-Control-Allow-Origin: http://localhost:8000/api/manageUser/register.php");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
