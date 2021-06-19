@@ -1,14 +1,14 @@
 <?php
 
-class Theater
+class Seat
 {
     private $conn;
-    private $table_name = "theaters";
+    private $table_name = "seats";
     // Properties
 
-    public $theater_id;
-    public $theater_name;
-    public $theater_img;
+    public $seat_id;
+    public $seat_type;
+    public $seat_price;
 
     public function __construct($conn)
     {
@@ -17,9 +17,9 @@ class Theater
 
     public function read()
     {
-        $sql = 'SELECT theater_id, theater_name, theater_img 
+        $sql = 'SELECT seat_id, seat_type, seat_price, showtime_id 
                 FROM ' . $this->table_name . 
-                ' ORDER BY theater_id ASC';
+                ' ORDER BY seat_id ASC';
 
         // Prepare statement
         $stmt = $this->conn->prepare($sql);
