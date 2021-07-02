@@ -66,15 +66,6 @@ if ($num_theater > 0) {
         foreach ($showtime_arr as $showtime) {
             
             if ($rows_theater['theater_id'] == $showtime['theater_id']) {
-                // $showtime_info = array(
-                //     'showtime_id' => $showtime['showtime_id'],
-                //     'date_and_time' => $showtime['date_and_time'],
-                //     'ticket_price' => $showtime['ticket_price'],
-                //     'showtime_duration' => $showtime['showtime_duration'],
-                //     'movie_id' => $showtime['movie_id'],
-                //     'seat_id' => $showtime['seat_id']
-                // );
-
                 array_push($showtimes_info, $showtime);
             }
         }
@@ -90,7 +81,7 @@ if ($num_theater > 0) {
             'theater_id' => $theater_id,
             'theater_name' => $theater_name,
             'theater_img' => $theater_img,
-            'showtimes_info' => array($showtimes_info)
+            'showtimes_info' => $showtimes_info
         );
 
         // Push to "data"        

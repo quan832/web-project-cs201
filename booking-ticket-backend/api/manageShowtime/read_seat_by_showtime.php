@@ -81,7 +81,7 @@ function read_seats_for_showtime($showtime_param) {
                     'ticket_price' => $row_showtime['ticket_price'],
                     'showtime_duration' => $row_showtime['showtime_duration'],
                     'movie_id' => $row_showtime['movie_id'],
-                    'seats_info' => array($seat_arr)
+                    'seats_info' => $seat_arr
                 );
                 break;
             }
