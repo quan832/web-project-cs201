@@ -53,21 +53,22 @@ class User
             return true;
         }
 
-        return false;    
+        return false;
     }
 
-    public function isEmailExists() {
-         // query to check if email exists
-        $sql = "SELECT ID, username, user_password
-                FROM " . $this->table_name . "
-                WHERE user_email = ?
-                LIMIT 0,1";
+    public function isEmailExists()
+    {
+        // query to check if email exists
+        $sql = "SELECT user_id, username, user_password
+               FROM " . $this->table_name . "
+               WHERE user_email = ?
+               LIMIT 0,1";
 
         // prepare the query
         $stmt = $this->conn->prepare($sql);
 
         // sanitize
-        $this->user_email=htmlspecialchars(strip_tags($this->user_email));
+        $this->user_email = htmlspecialchars(strip_tags($this->user_email));
 
         // bind given email value
         $stmt->bindParam(1, $this->user_email);
@@ -79,7 +80,7 @@ class User
         $num = $stmt->rowCount();
 
         // if email exists, assign values to object properties for easy access and use for php sessions
-        if($num>0){
+        if ($num > 0) {
 
             // get record details / values
             $row = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -1,7 +1,7 @@
 import "./App.css";
 
 // import route
-import { BrowserRouter, Route, Router, Switch } from "react-router-dom";
+import { Router, Switch } from "react-router-dom";
 
 // import components
 
