@@ -1,6 +1,7 @@
 // import pages
 import Home from "./Pages/Home/Home";
 import LoginPage from "./Pages/Login/LoginPage";
+import DetailPage from "./Pages/Detail/DetailPage";
 
 const routesHome = [
   {
@@ -11,8 +12,11 @@ const routesHome = [
   { path: "/login", exact: true, component: LoginPage },
   {
     path: "/home",
-
     component: Home,
+  },
+  {
+    path: "/movie/:id",
+    component: DetailPage,
   },
 ];
 

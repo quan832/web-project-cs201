@@ -3,6 +3,9 @@ import React from "react";
 // import route
 import { Link } from "react-router-dom";
 
+// import logo
+import logo from "../../assets/images/logo/logo.png";
+
 export default function Header() {
   return (
     <header className="header-section" style={{ background: "#0a1e5e" }}>
@@ -10,7 +13,7 @@ export default function Header() {
         <div className="header-wrapper">
           <div className="logo">
             <Link to="/home">
-              <img src="./assets/images/logo/logo.png" alt="logo" />
+              <img src={logo} alt="logo" />
             </Link>
           </div>
           <ul className="menu">

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FETCH_MOVIE } from "../../action/movieAction";
+import { Link } from "react-router-dom";
 
 import Slider from "react-slick";
 
@@ -25,7 +26,7 @@ export default function MovieSection() {
   const renderMovieItem = () => {
     return movies.map((item, index) => {
       return (
-        <div>
+        <Link to={`/movie/${item.id}`}>
           <div className="item" key={index} style={{ width: "95%" }}>
             <div className="movie-grid">
               <div
@@ -59,7 +60,7 @@ export default function MovieSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       );
     });
   };

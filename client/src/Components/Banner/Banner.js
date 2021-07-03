@@ -6,15 +6,19 @@ export default function Banner() {
       <div
         className="banner-bg bg_img bg-fixed"
         data-background="./assets/images/banner/banner01.jpg"
+        style={{
+          backgroundImage: 'url("./assets/images/banner/banner01.jpg")',
+        }}
       />
       <div className="container">
         <div className="banner-content">
           <h1 className="title  cd-headline clip">
             <span className="d-block">book your</span> tickets for
-            <span className="color-theme cd-words-wrapper p-0 m-0">
+            <span
+              className="color-theme cd-words-wrapper p-0 m-0"
+              style={{ width: "271.875px" }}
+            >
               <b className="is-visible">Movie</b>
-              <b>Event</b>
-              <b>Sport</b>
             </span>
           </h1>
           <p>
