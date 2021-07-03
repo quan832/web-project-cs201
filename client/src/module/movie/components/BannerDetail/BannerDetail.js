@@ -1,21 +1,24 @@
 import React from "react";
+import imageButton from "../../../../assets/images/movie/video-button.png";
 
-export default function BannerDetail() {
+export default function BannerDetail(props) {
+  const { imgURL, content, trailerURL, rate, name, premiereDate } = props.movie;
+
   return (
     <section
       className="details-banner bg_img"
       data-background="./assets/images/banner/banner03.jpg"
-      style={{ backgroundImage: 'url("./assets/images/banner/banner03.jpg")' }}
+      style={{ backgroundImage: `url(${imgURL})` }}
     >
       <div className="container">
         <div className="details-banner-wrapper">
           <div className="details-banner-thumb">
-            <img src="./assets/images/movie/venus.jpg" alt="movie" />
+            <img src={imgURL} alt="movie" />
             <a
               href="https://www.youtube.com/embed/KGeBMAgc46E"
               className="video-popup"
             >
-              <img src="./assets/images/movie/video-button.png" alt="movie" />
+              <img src={imageButton} alt="movie" />
             </a>
           </div>
           <div className="details-banner-content offset-lg-3">

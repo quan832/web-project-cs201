@@ -12,9 +12,11 @@ const routesHome = [
   { path: "/login", exact: true, component: LoginPage },
   {
     path: "/home",
+    exact: true,
     component: Home,
   },
   {
+    exact: true,
     path: "/movie/:id",
     component: DetailPage,
   },

@@ -18,7 +18,7 @@ export default function MovieSection() {
 
   useEffect(() => {
     dispatch({ type: FETCH_MOVIE });
-  }, []);
+  }, [dispatch]);
 
   // get movies
   const movies = useSelector((state) => state.movieReducer.movies);
@@ -26,8 +26,8 @@ export default function MovieSection() {
   const renderMovieItem = () => {
     return movies.map((item, index) => {
       return (
-        <Link to={`/movie/${item.id}`}>
-          <div className="item" key={index} style={{ width: "95%" }}>
+        <Link to={`/movie/${item.id}`} key={index}>
+          <div className="item" style={{ width: "95%" }}>
             <div className="movie-grid">
               <div
                 className="movie-thumb c-thumb"

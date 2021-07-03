@@ -1,6 +1,11 @@
 import React from "react";
+import tomato2 from "../../../../assets/images/movie/tomato2.png";
+import cake from "../../../../assets/images/movie/cake2.png";
 
-export default function BookingMovie() {
+
+export default function BookingMovie(props) {
+  const { imgURL, content, trailerURL, rate, name, premiereDate } = props.movie;
+
   return (
     <section className="book-section bg-one">
       <div className="container">
@@ -9,7 +14,7 @@ export default function BookingMovie() {
             <div className="item">
               <div className="item-header">
                 <div className="thumb">
-                  <img src="./assets/images/movie/tomato2.png" alt="movie" />
+                  <img src={tomato2} alt="movie" />
                 </div>
                 <div className="counter-area">
                   <span
@@ -46,7 +51,7 @@ export default function BookingMovie() {
             <div className="item">
               <div className="item-header">
                 <div className="thumb">
-                  <img src="./assets/images/movie/cake2.png" alt="movie" />
+                  <img src={cake} alt="movie" />
                 </div>
                 <div className="counter-area">
                   <span
