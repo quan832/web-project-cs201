@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MovieDetail from "../../module/movie/components/Detail/MovieDetail";
-import BannerDetail from "../../module/movie/components/BannerDetail/BannerDetail";
-import BookingMovie from "../../module/movie/components/BookingMovie/BookingMovie";
-
 import { useDispatch, useSelector } from "react-redux";
 import { FETCH_MOVIE_DETAIL } from "../../module/movie/action/movieAction";
+import BannerTicket from "../../module/ticket/Components/BannerTicket/BannerTicket";
+import BookTicket from "../../module/ticket/Components/BookTicket/BookTicket";
+import Ticket from "../../module/ticket/Components/Ticket/Ticket";
 
-export default function DetailPage(props) {
+export default function TicketPage(props) {
   const dispatch = useDispatch();
 
   const [id, setid] = useState(-1);
@@ -16,15 +15,15 @@ export default function DetailPage(props) {
 
     // action
     dispatch({ type: FETCH_MOVIE_DETAIL, payload: id });
-  }, [dispatch, props.match.params]);
+  }, [dispatch, id, props.match.params]);
 
   const movieDetail = useSelector((state) => state.movieReducer.movieDetail);
 
   return (
     <Fragment>
-      <BannerDetail movie={movieDetail} />
-      <BookingMovie movie={movieDetail} id={id} />
-      <MovieDetail movie={movieDetail} />
+      <BannerTicket movie={movieDetail} />
+      <BookTicket />
+      <Ticket />
     </Fragment>
   );
 }

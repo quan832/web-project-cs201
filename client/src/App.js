@@ -14,6 +14,9 @@ import HomeTemplate from "./template/HomeTemplate";
 import { createBrowserHistory } from "history";
 import { routesHome } from "./routes";
 
+// scroll to top
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+
 export const history = createBrowserHistory();
 
 const showItemHome = (routes) => {
@@ -34,7 +37,9 @@ const showItemHome = (routes) => {
 function App() {
   return (
     <Router history={history}>
-      <Switch>{showItemHome(routesHome)}</Switch>
+      <ScrollToTop>
+        <Switch>{showItemHome(routesHome)}</Switch>
+      </ScrollToTop>
     </Router>
   );
 }

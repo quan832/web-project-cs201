@@ -1,16 +1,13 @@
 import React from "react";
+import city from "../../../../assets/images/ticket/city.png";
+import cinema from "../../../../assets/images/ticket/cinema.png";
+import date from "../../../../assets/images/ticket/date.png";
 
 export default function TicketSearch() {
   return (
     <section className="search-ticket-section padding-top pt-lg-0">
       <div className="container">
-        <div
-          className="search-tab bg_img"
-          data-background="./assets/images/ticket/ticket-bg01.jpg"
-          style={{
-            backgroundImage: 'url("./assets/images/ticket/ticket-bg01.jpg")',
-          }}
-        >
+        <div className="search-tab bg_img">
           <div className="row align-items-center mb--20">
             <div className="col-lg-6 mb-20">
               <div className="search-ticket-header">
@@ -61,7 +58,7 @@ export default function TicketSearch() {
                 </div>
                 <div className="form-group">
                   <div className="thumb">
-                    <img src="./assets/images/ticket/city.png" alt="ticket" />
+                    <img src={city} alt="ticket" />
                   </div>
                   <span className="type">city</span>
                   <select className="select-bar" style={{ display: "none" }}>
@@ -102,7 +99,7 @@ export default function TicketSearch() {
                 </div>
                 <div className="form-group">
                   <div className="thumb">
-                    <img src="./assets/images/ticket/date.png" alt="ticket" />
+                    <img src={date} alt="ticket" />
                   </div>
                   <span className="type">date</span>
                   <select className="select-bar" style={{ display: "none" }}>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tomato2 from "../../../../assets/images/movie/tomato2.png";
 import cake from "../../../../assets/images/movie/cake2.png";
-
+import { Link } from "react-router-dom";
 
 export default function BookingMovie(props) {
   const { imgURL, content, trailerURL, rate, name, premiereDate } = props.movie;
+
+  const { id } = props.id;
 
   return (
     <section className="book-section bg-one">
@@ -114,9 +116,9 @@ export default function BookingMovie(props) {
               </p>
             </div>
           </div>
-          <a href="#0" className="custom-button">
+          <Link to={`/ticket/${id}`} className="custom-button">
             book tickets
-          </a>
+          </Link>
         </div>
       </div>
     </section>

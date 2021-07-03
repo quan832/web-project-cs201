@@ -1,5 +1,9 @@
 import React from "react";
 
+import offer1 from "../../../../assets/images/sidebar/offer01.png";
+import offer2 from "../../../../assets/images/sidebar/offer02.png";
+import offer3 from "../../../../assets/images/sidebar/offer03.png";
+
 export default function MovieDetail() {
   return (
     <section className="movie-details-section padding-top padding-bottom">
@@ -24,10 +28,7 @@ export default function MovieDetail() {
               <div className="offer-body">
                 <div className="offer-item">
                   <div className="thumb">
-                    <img
-                      src="./assets/images/sidebar/offer01.png"
-                      alt="sidebar"
-                    />
+                    <img src={offer1} alt="sidebar" />
                   </div>
                   <div className="content">
                     <h6>
@@ -38,10 +39,7 @@ export default function MovieDetail() {
                 </div>
                 <div className="offer-item">
                   <div className="thumb">
-                    <img
-                      src="./assets/images/sidebar/offer02.png"
-                      alt="sidebar"
-                    />
+                    <img src={offer2} alt="sidebar" />
                   </div>
                   <div className="content">
                     <h6>
@@ -55,10 +53,7 @@ export default function MovieDetail() {
                 </div>
                 <div className="offer-item">
                   <div className="thumb">
-                    <img
-                      src="./assets/images/sidebar/offer03.png"
-                      alt="sidebar"
-                    />
+                    <img src={offer3} alt="sidebar" />
                   </div>
                   <div className="content">
                     <h6>
@@ -70,16 +65,6 @@ export default function MovieDetail() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="widget-1 widget-banner">
-              <div className="widget-1-body">
-                <a href="#0">
-                  <img
-                    src="./assets/images/sidebar/banner/banner01.jpg"
-                    alt="banner"
-                  />
-                </a>
               </div>
             </div>
           </div>
@@ -178,168 +163,6 @@ export default function MovieDetail() {
                         lectus quis sapien. Duis blandit ipsum ac consectetur
                         scelerisque.{" "}
                       </p>
-                    </div>
-                    <div className="item">
-                      <div className="header">
-                        <h5 className="sub-title">cast</h5>
-                        <div className="navigation">
-                          <div className="cast-prev">
-                            <i className="flaticon-double-right-arrows-angles" />
-                          </div>
-                          <div className="cast-next">
-                            <i className="flaticon-double-right-arrows-angles" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="casting-slider owl-carousel">
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast01.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">Bill Hader</a>
-                            </h6>
-                            <span className="cate">actor</span>
-                            <p>As Richie Tozier</p>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast02.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">nora hardy</a>
-                            </h6>
-                            <span className="cate">actor</span>
-                            <p>As raven</p>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast03.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">alvin peters</a>
-                            </h6>
-                            <span className="cate">actor</span>
-                            <p>As magneto</p>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast04.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">josh potter</a>
-                            </h6>
-                            <span className="cate">actor</span>
-                            <p>As quicksilver</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="header">
-                        <h5 className="sub-title">crew</h5>
-                        <div className="navigation">
-                          <div className="cast-prev-2">
-                            <i className="flaticon-double-right-arrows-angles" />
-                          </div>
-                          <div className="cast-next-2">
-                            <i className="flaticon-double-right-arrows-angles" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="casting-slider-two owl-carousel">
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast05.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">pete warren</a>
-                            </h6>
-                            <span className="cate">actor</span>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast06.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">howard bass</a>
-                            </h6>
-                            <span className="cate">executive producer</span>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast07.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">naomi smith</a>
-                            </h6>
-                            <span className="cate">producer</span>
-                          </div>
-                        </div>
-                        <div className="cast-item">
-                          <div className="cast-thumb">
-                            <a href="#0">
-                              <img
-                                src="./assets/images/cast/cast08.jpg"
-                                alt="cast"
-                              />
-                            </a>
-                          </div>
-                          <div className="cast-content">
-                            <h6 className="cast-title">
-                              <a href="#0">tom martinez</a>
-                            </h6>
-                            <span className="cate">producer</span>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                   <div className="tab-item">
