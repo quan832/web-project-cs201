@@ -29,14 +29,26 @@ $user = new User($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
- 
+
+$user->user_email =  $data->email;
+$user->user_password = $data->password;
+
 // set product property values
-$user->user_email = $data->email;
-$email_exists = $user->isEmailExists();
+
+// Note: Pass 2 fields for login in Postman
+// For example:
+/*
+{
+    "email" : "trong@gmail.com",
+    "password" : "123456",
+}
+*/
+
  
-// check if email exists and if password is correct
-if($email_exists && password_verify($data->password, $user->user_password)){
+// if password is correct
+if($user->checkLogin($user->user_email, $user->user_password)){
  
+
     $token = array(
        "iat" => $issued_at,
        "exp" => $expiration_time,
@@ -70,6 +82,6 @@ else{
     http_response_code(401);
  
     // tell the user login failed
-    echo json_encode(array("message" => "Login failed."));
+    echo json_encode(array("error_messages:" => $user->errors));
 }
 ?>
