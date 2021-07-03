@@ -22,7 +22,8 @@ class User
         $this->conn = $conn;
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         // Check whether the email existed
         $sql = "SELECT * FROM " . $this->table_name . " WHERE user_email = :user_email";
         $stmt = $this->conn->prepare($sql);
@@ -33,7 +34,7 @@ class User
         //   $this->user = $results->fetchAll();
         // }
         $this->user = $stmt->fetch(PDO::FETCH_ASSOC);
-      }
+    }
 
     public function create()
     {
@@ -42,8 +43,8 @@ class User
             SET
                 username = :username,
                 user_email = :user_email, 
-                user_phone = :user_phone,
-                user_password = :user_password";
+                user_password = :user_password
+                ";
 
         // prepare the query
         $stmt = $this->conn->prepare($query);
@@ -51,13 +52,13 @@ class User
         // sanitize
         $this->username = htmlspecialchars(strip_tags($this->username));
         $this->user_email = htmlspecialchars(strip_tags($this->user_email));
-        $this->user_phone = htmlspecialchars(strip_tags($this->user_phone));
+        // $this->user_phone = htmlspecialchars(strip_tags($this->user_phone));
         $this->user_password = htmlspecialchars(strip_tags($this->user_password));
 
         // bind the values
         $stmt->bindParam(':username', $this->username);
         $stmt->bindParam(':user_email', $this->user_email);
-        $stmt->bindParam(':user_phone', $this->user_phone);
+        // $stmt->bindParam(':user_phone', $this->user_phone);
         $stmt->bindParam(':user_password', $this->user_password);
 
 
@@ -70,12 +71,13 @@ class User
             return true;
         }
 
-        return false;    
+        return false;
     }
 
-    public function isEmailExists() {
+    public function isEmailExists()
+    {
         // $this->user_email = $email;
-         // query to check if email exists in the db
+        // query to check if email exists in the db
         $sql = "SELECT user_id, username, user_password
                 FROM " . $this->table_name . "
                 WHERE user_email = ?
@@ -85,7 +87,7 @@ class User
         $stmt = $this->conn->prepare($sql);
 
         // sanitize
-        $this->user_email=htmlspecialchars(strip_tags($this->user_email));
+        $this->user_email = htmlspecialchars(strip_tags($this->user_email));
 
         // bind given email value
         $stmt->bindParam(1, $this->user_email);
@@ -97,7 +99,7 @@ class User
         $num = $stmt->rowCount();
 
         // if email exists, assign values to object properties for easy access and use for php sessions
-        if($num>0){
+        if ($num > 0) {
 
             // get record details / values
 
@@ -118,7 +120,8 @@ class User
         return false;
     }
 
-    public function checkLogin($email, $password) {
+    public function checkLogin($email, $password)
+    {
 
         $this->user_email = $email;
         $this->user_password = $password;
@@ -130,7 +133,7 @@ class User
 
             // get the info of the user 
             $this->getUser();
-            
+
             // verify the password in the database and password from the user inputs
             if (password_verify($this->user_password, $this->user['user_password'])) {
                 $this->username = $this->user['username'];
@@ -144,8 +147,8 @@ class User
             else {
                 $message = "Password does not match";
                 array_push($this->errors, $message);
-            }  
-        } 
+            }
+        }
         // if the email is not existed in the Database
         else {
             $message = "Email is not existed";
@@ -154,5 +157,4 @@ class User
 
         return false;
     }
-
 }

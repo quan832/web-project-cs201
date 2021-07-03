@@ -1,13 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { withRouter } from "react-router";
+import { APP_TOKEN } from "../../../../util/constant/constant";
+import _ from "lodash";
+import { REGISTER_USER } from "../../action/userAction";
 
-export default function Register() {
+
+function Register(props) {
+  const emailRef = React.createRef();
+  const passwordRef = React.createRef();
+  const usernameRef = React.createRef();
+
+  const dispatch = useDispatch();
+
+  //get token
+  const token = localStorage.getItem(APP_TOKEN);
+
+  // if islogin will route to homepage
+  useEffect(() => {
+    // if have token, router will change home page
+    if (!_.isEmpty(token)) {
+      props.history.push("/");
+    }
+  }, []);
+
+  const registerUser = () => {
+    // get value input
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const username = usernameRef.current.value;
+
+    // dispatch action
+    dispatch({
+      type: REGISTER_USER,
+      payload: {
+        email,
+        password,
+        username,
+      },
+    });
+
+    props.history.push("/");
+  };
+
   return (
     <div className="container">
       <div className="padding-top padding-bottom">
         <div className="account-area">
           <div className="section-header-3">
             <span className="cate">welcome</span>
-            <h2 className="title">to Boleto </h2>
+            <h2 className="title">to Cinema </h2>
           </div>
           <form className="account-form">
             <div className="form-group">
@@ -19,28 +61,31 @@ export default function Register() {
                 placeholder="Enter Your Email"
                 id="email1"
                 required
+                ref={emailRef}
               />
             </div>
             <div className="form-group">
               <label htmlFor="pass1">
-                Password<span>*</span>
+                username<span>*</span>
               </label>
               <input
-                type="password"
-                placeholder="Password"
-                id="pass1"
+                type="text"
+                placeholder="Enter your name"
+                id="uname"
                 required
+                ref={usernameRef}
               />
             </div>
             <div className="form-group">
               <label htmlFor="pass2">
-                Confirm Password<span>*</span>
+                Password<span>*</span>
               </label>
               <input
                 type="password"
                 placeholder="Password"
                 id="pass2"
                 required
+                ref={passwordRef}
               />
             </div>
             <div className="form-group checkgroup">
@@ -51,7 +96,14 @@ export default function Register() {
               </label>
             </div>
             <div className="form-group text-center">
-              <input type="submit" defaultValue="Sign Up" />
+              <input
+                onClick={(e) => {
+                  e.preventDefault();
+                  registerUser();
+                }}
+                type="submit"
+                defaultValue="Sign Up"
+              />
             </div>
           </form>
           <div className="option">
@@ -82,3 +134,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default withRouter(Register);

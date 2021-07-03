@@ -16,12 +16,11 @@ class URL {
   // user module
   static LOGIN_URL = {
     LOGIN: `${url}${userEndPoint}/login.php`,
+    REGISTER: `${url}${userEndPoint}/register.php`,
   };
 
   // ticket module
-  static TICKET_URL = {
-
-  }
+  static TICKET_URL = {};
 }
 
 // handle CORS in axios
@@ -46,6 +45,19 @@ function loginUser({ email, password }) {
   );
 }
 
+function registerUser({ email, password, username }) {
+  return axios.post(
+    URL.LOGIN_URL.REGISTER,
+    {
+      username,
+      email,
+      pwd1: password,
+      pwd2: password,
+    },
+    { headers }
+  );
+}
+
 function fetchMovie() {
   return axios.get(URL.MOVIE_URL.GET);
 }
@@ -60,11 +72,10 @@ function fetchMovieDetail(ID) {
   );
 }
 
-
-
 const Api = {
   // user
   loginUser,
+  registerUser,
 
   // movie
   fetchMovie,
