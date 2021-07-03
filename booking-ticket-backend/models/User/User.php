@@ -58,7 +58,7 @@ class User
 
     public function isEmailExists() {
          // query to check if email exists
-        $sql = "SELECT ID, username, user_password
+        $sql = "SELECT user_id, username, user_password
                 FROM " . $this->table_name . "
                 WHERE user_email = ?
                 LIMIT 0,1";
@@ -85,7 +85,7 @@ class User
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // assign values to object properties
-            $this->user_id = $row['ID'];
+            $this->user_id = $row['user_id'];
             $this->username = $row['username'];
             $this->user_password = $row['user_password'];
 
