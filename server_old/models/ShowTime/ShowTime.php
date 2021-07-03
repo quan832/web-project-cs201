@@ -20,7 +20,8 @@ class ShowTime
     public function read()
     {
         $sql = 'SELECT showtime_id, date_and_time, ticket_price, showtime_duration, movie_id, theater_id
-                FROM ' . $this->table_name;
+                FROM ' . $this->table_name . 
+                ' ORDER BY showtime_id ASC';
 
         // Prepare statement
         $stmt = $this->conn->prepare($sql);

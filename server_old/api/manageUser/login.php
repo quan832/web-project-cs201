@@ -5,7 +5,8 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
- 
+header('Access-Control-Allow-Origin: *');
+
 // files needed to connect to database
 include_once '../../config/Database.php';
 include_once '../../models/User/User.php';
@@ -29,26 +30,14 @@ $user = new User($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
-
-$user->user_email =  $data->email;
-$user->user_password = $data->password;
-
+ 
 // set product property values
-
-// Note: Pass 2 fields for login in Postman
-// For example:
-/*
-{
-    "email" : "trong@gmail.com",
-    "password" : "123456",
-}
-*/
-
+$user->user_email = $data->email;
+$email_exists = $user->isEmailExists();
  
-// if password is correct
-if($user->checkLogin($user->user_email, $user->user_password)){
+// check if email exists and if password is correct
+if($email_exists && password_verify($data->password, $user->user_password)){
  
-
     $token = array(
        "iat" => $issued_at,
        "exp" => $expiration_time,
@@ -82,6 +71,6 @@ else{
     http_response_code(401);
  
     // tell the user login failed
-    echo json_encode(array("error_messages:" => $user->errors));
+    echo json_encode(array("message" => "Login failed."));
 }
 ?>
