@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FETCH_MOVIE } from "../../action/movieAction";
 
 export default function MovieSection() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: FETCH_MOVIE });
+  }, []);
+
   return (
     <section className="movie-section padding-top padding-bottom">
       <div className="container">

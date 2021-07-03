@@ -2,18 +2,16 @@ import { all, takeLatest, call, put } from "redux-saga/effects";
 import Api from "../../../util/api/apiUtil";
 import { LOGIN_USER, RETRIEVE_LOGIN } from "../action/userAction";
 
-function* loginUser({ email, password }) {
+function* loginUser({ payload: { email, password } }) {
   try {
-    const data  = yield call(Api.loginUser, { email, password });
+    const data = yield call(Api.loginUser, { email, password });
 
-    console.log(data);
-
-    debugger;
-    
     if (data.status === 200) {
       yield put({ type: RETRIEVE_LOGIN, payload: { data } });
     }
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function* watchUserLogin() {
