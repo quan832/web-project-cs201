@@ -15,7 +15,7 @@ export default function movieReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         isFetching: false,
-        movies: [...state.movies, payload],
+        movies: [...state.movies, ...payload],
       };
     default:
       return state;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="header-section">
+    <header className="header-section" style={{ background: "#0a1e5e" }}>
       <div className="container">
         <div className="header-wrapper">
           <div className="logo">
