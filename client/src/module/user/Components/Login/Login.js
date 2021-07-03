@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { withRouter } from "react-router";
+import { APP_TOKEN } from "../../../../util/constant/constant";
+import _ from "lodash";
 
 // import action
 import { LOGIN_USER } from "../../action/userAction";
 
-export default function Login(props) {
+// import alert
+import makeToast from "../../../../Components/Alert/Toaster";
+
+function Login(props) {
   const emailRef = React.createRef();
   const passwordRef = React.createRef();
 
   const dispatch = useDispatch();
+
+  //get token
+  const token = localStorage.getItem(APP_TOKEN);
+
+  useEffect(() => {
+    // if have token, router will change home page
+    if (!_.isEmpty(token)) {
+      props.history.push("/");
+    }
+  }, []);
 
   const loginUser = () => {
     // get value input
@@ -16,7 +32,6 @@ export default function Login(props) {
     const password = passwordRef.current.value;
 
     // dispatch action
-
     dispatch({
       type: LOGIN_USER,
       payload: {
@@ -24,6 +39,10 @@ export default function Login(props) {
         password,
       },
     });
+
+    makeToast("success", "Login successfully");
+
+    props.history.push("/");
   };
 
   return (
@@ -105,3 +124,5 @@ export default function Login(props) {
     </div>
   );
 }
+
+export default withRouter(Login);

@@ -1,4 +1,8 @@
 import React from "react";
+import cinema from "../../../../assets/images/ticket/cinema.png";
+import date from "../../../../assets/images/ticket/date.png";
+import city from "../../../../assets/images/ticket/city.png";
+import exp from "../../../../assets/images/ticket/exp.png";
 
 export default function BookTicket() {
   return (
@@ -7,7 +11,7 @@ export default function BookTicket() {
         <form className="ticket-search-form two">
           <div className="form-group">
             <div className="thumb">
-              <img src="./assets/images/ticket/city.png" alt="ticket" />
+              <img src={city} alt="ticket" />
             </div>
             <span className="type">city</span>
             <select className="select-bar" style={{ display: "none" }}>
@@ -48,7 +52,7 @@ export default function BookTicket() {
           </div>
           <div className="form-group">
             <div className="thumb">
-              <img src="./assets/images/ticket/date.png" alt="ticket" />
+              <img src={date} alt="ticket" />
             </div>
             <span className="type">date</span>
             <select className="select-bar" style={{ display: "none" }}>
@@ -77,7 +81,7 @@ export default function BookTicket() {
           </div>
           <div className="form-group">
             <div className="thumb">
-              <img src="./assets/images/ticket/cinema.png" alt="ticket" />
+              <img src={cinema} alt="ticket" />
             </div>
             <span className="type">cinema</span>
             <select className="select-bar" style={{ display: "none" }}>
@@ -118,7 +122,7 @@ export default function BookTicket() {
           </div>
           <div className="form-group">
             <div className="thumb">
-              <img src="./assets/images/ticket/exp.png" alt="ticket" />
+              <img src={exp} alt="ticket" />
             </div>
             <span className="type">Experience</span>
             <select className="select-bar" style={{ display: "none" }}>

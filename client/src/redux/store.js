@@ -12,7 +12,7 @@ import logger from "redux-logger";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [],
+  whitelist: ["userReducer"],
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

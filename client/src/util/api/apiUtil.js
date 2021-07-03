@@ -7,14 +7,21 @@ const url = `http://localhost:8000/`;
 
 // URL
 class URL {
+  // movie module
   static MOVIE_URL = {
     GET: `${url}${movieEndPoint}/read.php`,
     GET_SINGLE: `${url}${movieEndPoint}/read_single_movie.php`,
   };
 
+  // user module
   static LOGIN_URL = {
     LOGIN: `${url}${userEndPoint}/login.php`,
   };
+
+  // ticket module
+  static TICKET_URL = {
+
+  }
 }
 
 // handle CORS in axios
@@ -53,6 +60,8 @@ function fetchMovieDetail(ID) {
   );
 }
 
+
+
 const Api = {
   // user
   loginUser,
@@ -60,6 +69,8 @@ const Api = {
   // movie
   fetchMovie,
   fetchMovieDetail,
+
+  // ticket
 };
 
 export default Api;

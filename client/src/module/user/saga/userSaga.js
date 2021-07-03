@@ -1,14 +1,17 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
 import Api from "../../../util/api/apiUtil";
+import { APP_TOKEN } from "../../../util/constant/constant";
 import { LOGIN_USER, RETRIEVE_LOGIN } from "../action/userAction";
 
 function* loginUser({ payload: { email, password } }) {
   try {
-    const data = yield call(Api.loginUser, { email, password });
+    const { data } = yield call(Api.loginUser, { email, password });
 
-    if (data.status === 200) {
-      yield put({ type: RETRIEVE_LOGIN, payload: { data } });
-    }
+    // dispatch to reducer
+    yield put({ type: RETRIEVE_LOGIN, payload: data });
+
+    // save in local storage
+    localStorage.setItem(APP_TOKEN, data.jwt);
   } catch (err) {
     console.log(err);
   }
