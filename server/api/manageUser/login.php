@@ -6,6 +6,12 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Methods: GET, POST');
+
+header("Access-Control-Allow-Headers: X-Requested-With");
+
 // files needed to connect to database
 include_once '../../config/Database.php';
 include_once '../../models/User/User.php';
@@ -30,7 +36,7 @@ $user = new User($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$user->user_email =  $data->email;
+$user->user_email = $data->email;
 $user->user_password = $data->password;
 
 // set product property values

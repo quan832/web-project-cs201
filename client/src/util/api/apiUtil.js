@@ -18,16 +18,25 @@ class URL {
 }
 
 // handle CORS in axios
-axios.defaults.headers.common["Content-Type"] =
-  "application/x-www-form-urlencoded; charset=UTF-8'";
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+// axios.defaults.headers.common["Content-Type"] =
+//   "application/x-www-form-urlencoded; charset=UTF-8'";
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+// axios.defaults.headers.common["Content-Type"] = "text/plain";
+
+const headers = {
+  "Content-Type": "text/plain",
+};
 
 // api
 function loginUser({ email, password }) {
-  return axios.post(URL.LOGIN_URL.LOGIN, {
-    email,
-    password,
-  });
+  return axios.post(
+    URL.LOGIN_URL.LOGIN,
+    {
+      email,
+      password,
+    },
+    { headers }
+  );
 }
 
 function fetchMovie() {
