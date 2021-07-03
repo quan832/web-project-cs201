@@ -12,6 +12,9 @@ class Movie
     public $trailer;
     public $movie_img;
     public $premiere_date;
+
+    public $movie = [];
+
     public $rate;
 
     // Constructor with DB
@@ -39,34 +42,49 @@ class Movie
     }
 
     // Get Single Movie
-    public function read_single()
+    public function read_single($movie_id_param)
     {
         // Create query
-        $query = 'SELECT c.name as category_name, p.id, p.category_id, p.title, p.body, p.author, p.created_at
-                                    FROM ' . $this->table . ' p
-                                    LEFT JOIN
-                                      categories c ON p.category_id = c.id
-                                    WHERE
-                                      p.id = ?
-                                    LIMIT 0,1';
+        // $query = 'SELECT c.name as category_name, p.id, p.category_id, p.title, p.body, p.author, p.created_at
+        //                             FROM ' . $this->table . ' p
+        //                             LEFT JOIN
+        //                               categories c ON p.category_id = c.id
+        //                             WHERE
+        //                               p.id = ?
+        //                             LIMIT 0,1';
+
+        // // Prepare statement
+        // $stmt = $this->conn->prepare($query);
+
+        // // Bind ID
+        // $stmt->bindParam(1, $this->id);
+
+        // // Execute query
+        // $stmt->execute();
+
+        // $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // // Set properties
+        // $this->title = $row['title'];
+        // $this->body = $row['body'];
+        // $this->author = $row['author'];
+        // $this->category_id = $row['category_id'];
+        // $this->category_name = $row['category_name'];
+
+
+        // Create query
+        $this->movie_id = $movie_id_param;
+        $query = 'SELECT movie_name, movie_id, aliases, trailer, movie_img, premiere_date, rate
+                                FROM ' . $this->table . ' WHERE movie_id = :movie_id';
 
         // Prepare statement
         $stmt = $this->conn->prepare($query);
-
-        // Bind ID
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(":movie_id", $this->movie_id);
 
         // Execute query
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Set properties
-        $this->title = $row['title'];
-        $this->body = $row['body'];
-        $this->author = $row['author'];
-        $this->category_id = $row['category_id'];
-        $this->category_name = $row['category_name'];
+        return $stmt;
     }
 
     // Create Movie

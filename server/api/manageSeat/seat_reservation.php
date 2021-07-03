@@ -14,10 +14,11 @@ $db = $database->connect();
 $seat = new Seat($db);
 
 // get posted data
-$data = json_decode(file_get_contents("php://input"));
-
+$seats = $_GET['array_seat'];
+// $seats = array($seats);
 // Take the array of seats
-$seats = $data->array_seat;
+
+var_dump($seats);
 
 if (!empty($seats)) {
     // Update the seat_status 

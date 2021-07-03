@@ -2,7 +2,7 @@
 // Headers
 header('Access-Control-Allow-Origin: localhost:8000/api/manageMovie/read_single_movie.php');
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
@@ -21,49 +21,32 @@ $db = $database->connect();
 
 // Instantiate blog movie object
 $movie = new Movie($db);
-// Blog movie query
-$result = $movie->read();
-// Get row count
-$num = $result->rowCount();
 
+// get posted data
+$data = $_GET['id'];
+$movie->movie_id = $data;
+// var_dump("The movie id you pass: " . $movie->movie_id);
+$result = $movie->read_single($movie->movie_id);
 
-// pass ID of the movie you want to get data.
-function readSingleMovie($movie_id_param)
-{
+if ($result->rowCount() == 1) {
 
-    global $num;
-    global $result;
+    $row = $result->fetch(PDO::FETCH_ASSOC);
 
-    // Check if any movies
-    if ($num > 0) {
+    $single_movie = array(
+        'id' => $row['movie_id'],
+        'name' => $row['movie_name'],
+        'content' => html_entity_decode($row['aliases']),
+        'trailerURL' => $row['trailer'],
+        'imgURL' => $row['movie_img'],
+        'premiereDate' => $row['premiere_date'],
+        'rate' => $row['rate'],
+    );
 
-        $movie_item = array();
-
-
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-
-            if ($row['movie_id'] == $movie_id_param) {
-                $movie_item = array(
-                    'id' => $movie_id,
-                    'name' => $movie_name,
-                    'content' => html_entity_decode($aliases),
-                    'trailerURL' => $trailer,
-                    'imgURL' => $movie_img,
-                    'premiereDate' => $premiere_date,
-                    'rate' => $rate,
-                );
-                break;
-            }
-        }
-
-        echo json_encode($movie_item);
-    } else {
-        // No movies
-        echo json_encode(
-            array('message' => 'No movies found')
-        );
-    }
+    echo json_encode($single_movie);
+    
+} else {
+    // No movies
+    echo json_encode(
+        array('message' => 'No movies found')
+    );
 }
-
-readSingleMovie(4);

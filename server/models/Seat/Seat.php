@@ -33,7 +33,12 @@ class Seat
 
     // Function update seat_status in seats table 
     public function updateSeatStatus($array_seat) {
-        for ($i = 0; $i <= count($array_seat); $i++) {
+        $length = count($array_seat);
+        
+        var_dump("This is from updateSeatStatus: " . $length);
+
+        for ($i = 0; $i < $length; $i++) {
+
             $sql = "UPDATE " . $this->table_name . " SET seat_status = 1 WHERE seat_id = :seat_id;";
 
             $this->seat_id = $array_seat[$i];
@@ -41,6 +46,7 @@ class Seat
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":seat_id", $this->seat_id);
             $stmt->execute();
+
         }
     }
 }
