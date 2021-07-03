@@ -39,9 +39,7 @@ function Login(props) {
         password,
       },
     });
-
-    makeToast("success", "Login successfully");
-
+    
     props.history.push("/");
   };
 

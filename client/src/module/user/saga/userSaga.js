@@ -22,8 +22,10 @@ function* loginUser({ payload: { email, password } }) {
 
     // save in local storage
     localStorage.setItem(APP_TOKEN, data.jwt);
+
+    makeToast("success", `${data.message}`);
   } catch (err) {
-    console.log(err);
+    makeToast("error", `${err.response.data.message}`);
   }
 }
 

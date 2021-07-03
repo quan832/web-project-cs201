@@ -88,6 +88,5 @@ else{
     http_response_code(401);
  
     // tell the user login failed
-    echo json_encode(array("error_messages:" => $user->errors));
+    echo json_encode(array("message" => $user->errors));
 }
-?>
