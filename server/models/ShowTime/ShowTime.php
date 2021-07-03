@@ -6,7 +6,7 @@ class ShowTime
     private $table_name = "showtimes";
     // Properties
 
-    public $showtimes_id;
+    public $showtime_id;
     public $date_time;
     public $ticket_id;
     public $showtimes_duration;
@@ -25,6 +25,20 @@ class ShowTime
         // Prepare statement
         $stmt = $this->conn->prepare($sql);
 
+        // Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function read_single($showtime_id_param) {
+        $this->showtime_id = $showtime_id_param;
+        $query = 'SELECT showtime_id, date_and_time, ticket_price, showtime_duration, movie_id, theater_id
+                  FROM ' . $this->table_name . ' WHERE showtime_id = ' . $this->showtime_id;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+        
         // Execute query
         $stmt->execute();
 
