@@ -5,6 +5,7 @@ import LoginPage from "./Pages/Login/LoginPage";
 import DetailPage from "./Pages/Detail/DetailPage";
 import TicketPage from "./Pages/Ticket/TicketPage";
 import RegisterPage from "./Pages/Register/RegisterPage";
+import SeatPage from "./Pages/Seat/SeatPage";
 
 const routesHome = [
   {
@@ -28,6 +29,11 @@ const routesHome = [
     exact: true,
     path: "/ticket/:id",
     component: TicketPage,
+  },
+  {
+    exact: true,
+    path: "/seatPlan/:id",
+    component: SeatPage,
   },
 ];
 

@@ -4,12 +4,14 @@ import {
   FETCH_MOVIE_DETAIL,
   FETCH_MOVIE_DETAIL_SUCCESS,
   FETCH_MOVIE_SUCCESS,
+  FETCH_MOVIE_TIME_SUCCESS,
 } from "../action/movieAction";
 
 const initialState = {
   movieDetail: {
     isFetching: false,
   },
+  movieTime: {},
   movies: [],
   isFetching: false,
 };
@@ -42,6 +44,17 @@ export default function movieReducer(state = initialState, { type, payload }) {
           ...payload,
         },
       };
+
+    case FETCH_MOVIE_TIME_SUCCESS:
+      return {
+        ...state,
+        movieTime: {
+          ...state.movieTime,
+          isFetching: true,
+          ...payload,
+        },
+      };
+
     default:
       return state;
   }

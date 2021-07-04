@@ -11,12 +11,15 @@ export default function DetailPage(props) {
 
   const [id, setid] = useState(-1);
 
-  useEffect(() => {
-    setid(props.match.params);
+  // setid(props.match.params.id);
 
+  useEffect(() => {
+    const param = props.match.params.id;
+
+    setid(param);
     // action
-    dispatch({ type: FETCH_MOVIE_DETAIL, payload: id });
-  }, [dispatch, props.match.params]);
+    dispatch({ type: FETCH_MOVIE_DETAIL, payload: param });
+  }, []);
 
   const movieDetail = useSelector((state) => state.movieReducer.movieDetail);
 

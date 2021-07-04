@@ -11,6 +11,7 @@ class URL {
   static MOVIE_URL = {
     GET: `${url}${movieEndPoint}/read.php`,
     GET_SINGLE: `${url}${movieEndPoint}/read_single_movie.php`,
+    GET_TIME_BY_MOVIE: `${url}${movieEndPoint}/read_showtime_theater_by_movie.php`,
   };
 
   // user module
@@ -20,7 +21,9 @@ class URL {
   };
 
   // ticket module
-  static TICKET_URL = {};
+  static TICKET_URL = {
+    GET_BY_MOVIE: `${url}${movieEndPoint}/read.php`,
+  };
 }
 
 // handle CORS in axios
@@ -62,11 +65,21 @@ function fetchMovie() {
   return axios.get(URL.MOVIE_URL.GET);
 }
 
-function fetchMovieDetail(ID) {
+function fetchMovieDetail(id) {
   return axios.get(
     URL.MOVIE_URL.GET_SINGLE,
     {
-      params: { ID },
+      params: { id },
+    },
+    { headers }
+  );
+}
+
+function fetchMovieTime(id) {
+  return axios.get(
+    URL.MOVIE_URL.GET_TIME_BY_MOVIE,
+    {
+      params: { movie_id: id },
     },
     { headers }
   );
@@ -80,6 +93,7 @@ const Api = {
   // movie
   fetchMovie,
   fetchMovieDetail,
+  fetchMovieTime,
 
   // ticket
 };

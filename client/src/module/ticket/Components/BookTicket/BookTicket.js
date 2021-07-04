@@ -5,6 +5,8 @@ import city from "../../../../assets/images/ticket/city.png";
 import exp from "../../../../assets/images/ticket/exp.png";
 
 export default function BookTicket() {
+
+
   return (
     <section className="book-section bg-one">
       <div className="container">

@@ -7,9 +7,6 @@ import _ from "lodash";
 // import action
 import { LOGIN_USER } from "../../action/userAction";
 
-// import alert
-import makeToast from "../../../../Components/Alert/Toaster";
-
 function Login(props) {
   const emailRef = React.createRef();
   const passwordRef = React.createRef();
@@ -39,7 +36,7 @@ function Login(props) {
         password,
       },
     });
-    
+
     props.history.push("/");
   };
 

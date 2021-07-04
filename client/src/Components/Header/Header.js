@@ -48,7 +48,7 @@ function Header(props) {
               <a href="#0">movies</a>
               <ul className="submenu">
                 <li>
-                  <a>Movie List</a>
+                  <Link to="/seatPlan/4">Movie List</Link>
                 </li>
                 <li>
                   <a>Cinema Movie</a>

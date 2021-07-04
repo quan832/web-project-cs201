@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FETCH_MOVIE_DETAIL } from "../../module/movie/action/movieAction";
+import {
+  FETCH_MOVIE_DETAIL,
+  FETCH_MOVIE_TIME,
+} from "../../module/movie/action/movieAction";
 import BannerTicket from "../../module/ticket/Components/BannerTicket/BannerTicket";
 import BookTicket from "../../module/ticket/Components/BookTicket/BookTicket";
 import Ticket from "../../module/ticket/Components/Ticket/Ticket";
@@ -11,19 +14,19 @@ export default function TicketPage(props) {
   const [id, setid] = useState(-1);
 
   useEffect(() => {
-    setid(props.match.params);
+    setid(props.match.params.id);
 
     // action
-    dispatch({ type: FETCH_MOVIE_DETAIL, payload: id });
+    dispatch({ type: FETCH_MOVIE_TIME, payload: id });
   }, [dispatch, id, props.match.params]);
 
-  const movieDetail = useSelector((state) => state.movieReducer.movieDetail);
+  const timeDetail = useSelector((state) => state.movieReducer.movieTime);
 
   return (
     <Fragment>
-      <BannerTicket movie={movieDetail} />
+      <BannerTicket movie={timeDetail} />
       <BookTicket />
-      <Ticket />
+      <Ticket movie={timeDetail} />
     </Fragment>
   );
 }

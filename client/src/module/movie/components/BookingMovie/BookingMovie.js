@@ -2,11 +2,19 @@ import React, { useEffect, useState } from "react";
 import tomato2 from "../../../../assets/images/movie/tomato2.png";
 import cake from "../../../../assets/images/movie/cake2.png";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { FETCH_MOVIE_TIME } from "../../action/movieAction";
 
 export default function BookingMovie(props) {
   const { imgURL, content, trailerURL, rate, name, premiereDate } = props.movie;
 
-  const { id } = props.id;
+  const { id } = props;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch({ type: FETC, payload: id });
+  }, []);
 
   return (
     <section className="book-section bg-one">
