@@ -44,5 +44,19 @@ class ShowTime
 
         return $stmt;
     }
+
+    public function read_single_showtime_by_movie($movie_id) {
+        $this->movie_id = $movie_id;
+        $query = 'SELECT showtime_id, date_and_time, ticket_price, showtime_duration, movie_id, theater_id
+                  FROM ' . $this->table_name . ' WHERE showtime_id = ' . $this->movie_id;
+        
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+        
+        // Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
 ?>

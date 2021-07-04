@@ -29,5 +29,22 @@ class Theater
 
         return $stmt;
     }
+
+    public function read_single($theater_id) {
+        
+        $this->theater_id = $theater_id;
+
+        $sql = 'SELECT theater_id, theater_name, theater_img 
+                FROM ' . $this->table_name . 
+                ' WHERE theater_id = ' . $this->theater_id;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($sql);
+
+        // Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
 ?>
