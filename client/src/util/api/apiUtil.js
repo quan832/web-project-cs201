@@ -2,6 +2,8 @@ import axios from "axios";
 
 const userEndPoint = "api/manageUser";
 const movieEndPoint = "api/manageMovie";
+const showtimeEndPoint = "api/manageShowtime";
+const seatEndPoint = 'api/manageSeat'
 
 const url = `http://localhost:8000/`;
 
@@ -22,8 +24,13 @@ class URL {
 
   // ticket module
   static TICKET_URL = {
-    GET_BY_MOVIE: `${url}${movieEndPoint}/read.php`,
+    GET_BY_MOVIE: `${url}${showtimeEndPoint}/read_seat_by_showtime.php`,
   };
+
+  // seat module
+  static SEAT_URL ={
+    BOOK_TICKET : `${url}${seatEndPoint}/seat_reservation.php`,
+  }
 }
 
 // handle CORS in axios
@@ -85,6 +92,26 @@ function fetchMovieTime(id) {
   );
 }
 
+function fetchSeatByTimeByID(id) {
+  return axios.get(
+    URL.TICKET_URL.GET_BY_MOVIE,
+    {
+      params: { showtime_id: id },
+    },
+    { headers }
+  );
+}
+
+function bookSeatByIds(ids) {
+  return axios.post(
+    URL.SEAT_URL.BOOK_TICKET,
+    {
+      params: { seat_id: ids },
+    },
+    { headers }
+  );
+}
+
 const Api = {
   // user
   loginUser,
@@ -95,7 +122,9 @@ const Api = {
   fetchMovieDetail,
   fetchMovieTime,
 
-  // ticket
+  // Seat
+  fetchSeatByTimeByID,
+  bookSeatByIds,
 };
 
 export default Api;

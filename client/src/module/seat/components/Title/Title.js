@@ -7,10 +7,10 @@ export default function Title() {
         <div className="page-title-area">
           <div className="item md-order-1">
             <a
-              href="movie-ticket-plan.html"
+             
               className="custom-button back-button"
             >
-              <i className="flaticon-double-right-arrows-angles" />
+              {/* <i className="flaticon-double-right-arrows-angles" /> */}
               back
             </a>
           </div>
